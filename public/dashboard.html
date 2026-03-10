@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard — GetShitDone</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght@20..48,300" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://cdn.lordicon.com/lordicon.js"></script>
+    <script src="js/background.js" defer></script>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <lord-icon src="https://cdn.lordicon.com/abfverha.json" trigger="loop" delay="3000" colors="primary:#6366f1,secondary:#ec4899" style="width:28px;height:28px"></lord-icon>
+                GetShitDone
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav"><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="mainNav">
+                <ul class="navbar-nav ms-auto align-items-lg-center gap-1">
+                    <li class="nav-item"><a class="nav-link" href="dashboard.html"><span class="material-symbols-outlined">space_dashboard</span> Dashboard</a></li>
+                    <li class="nav-item"><a class="nav-link" href="index.html"><span class="material-symbols-outlined">home</span> Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="login.html"><span class="material-symbols-outlined">logout</span> Logout</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container py-5">
+        <div class="d-flex justify-content-between align-items-start flex-wrap gap-3 mb-4">
+            <div>
+                <h1><span class="material-symbols-outlined" style="font-size:2rem;vertical-align:middle;">checklist</span> My Tasks</h1>
+                <p style="color:var(--text-muted);">Stay focused. Get it done.</p>
+            </div>
+        </div>
+
+        <!-- Progress -->
+        <div class="mb-4">
+            <div class="d-flex justify-content-between mb-1" style="font-size:0.8125rem;color:var(--text-muted);">
+                <span>Progress</span>
+                <span id="progress-text">Loading...</span>
+            </div>
+            <div class="progress-gsd">
+                <div class="progress-gsd-fill" id="progress-fill" style="width:0%;"></div>
+            </div>
+        </div>
+
+        <!-- Add task -->
+        <form id="add-task-form" class="d-flex gap-2 mb-4 flex-wrap">
+            <input type="text" id="new-task-title" class="form-control form-control-gsd flex-grow-1" placeholder="What needs doing?" required>
+            <input type="text" id="new-task-desc" class="form-control form-control-gsd" placeholder="Description" style="max-width:180px;">
+            <input type="date" id="new-task-date" class="form-control form-control-gsd" style="max-width:170px;">
+            <button type="submit" class="btn btn-gsd btn-gsd-primary"><span class="material-symbols-outlined" style="font-size:1.1rem;">add</span> Add</button>
+        </form>
+
+        <!-- Filters -->
+        <div class="d-flex gap-2 mb-4 flex-wrap">
+            <button class="filter-tab active" data-filter="all">All</button>
+            <button class="filter-tab" data-filter="active">Active</button>
+            <button class="filter-tab" data-filter="completed">Completed</button>
+        </div>
+
+        <!-- Task list -->
+        <div id="task-list" class="task-list">
+            <div class="empty-state">
+                <span class="material-symbols-outlined">hourglass_empty</span>
+                <h3 class="mt-2">Loading tasks...</h3>
+            </div>
+        </div>
+    </main>
+
+    <!-- Edit Modal (Bootstrap) -->
+    <div class="modal fade" id="editModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content modal-content-gsd">
+                <div class="modal-header border-0 pb-0">
+                    <h5 class="modal-title"><span class="material-symbols-outlined" style="vertical-align:middle;margin-right:0.4rem;">edit_note</span> Edit Task</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="edit-task-form">
+                        <input type="hidden" id="edit-task-id">
+                        <div class="mb-3">
+                            <label class="form-label-gsd">Title</label>
+                            <input type="text" id="edit-task-title" class="form-control form-control-gsd" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label-gsd">Description</label>
+                            <input type="text" id="edit-task-desc" class="form-control form-control-gsd">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label-gsd">Due Date</label>
+                            <input type="date" id="edit-task-date" class="form-control form-control-gsd">
+                        </div>
+                        <button type="submit" class="btn btn-gsd btn-gsd-primary w-100"><span class="material-symbols-outlined" style="font-size:1.1rem;">save</span> Save Changes</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="py-4 text-center">
+        <div class="container"><p class="mb-0">&copy; 2026 GetShitDone. Built for doers.</p></div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
