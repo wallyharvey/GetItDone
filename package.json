@@ -1,26 +1,32 @@
 {
-  "name": "getshitdone",
-  "version": "3.0.0",
-  "description": "GetShitDone - A full-stack to-do app for learning back-end web development",
-  "main": "server/index.js",
-  "scripts": {
-    "predev": "[ -d node_modules ] || npm install",
-    "prestart": "[ -d node_modules ] || npm install",
-    "setup": "npm install && npm run dev",
-    "start": "node server/index.js",
-    "dev": "nodemon server/index.js"
-  },
-  "keywords": ["todo", "express", "mongodb", "learning"],
-  "author": "EQC Institute of Technology",
-  "license": "ISC",
-  "dependencies": {
-    "cors": "^2.8.5",
-    "dotenv": "^16.4.7",
-    "express": "^4.21.2",
-    "mongoose": "^8.12.0",
-    "nodemailer": "^7.0.6"
-  },
-  "devDependencies": {
-    "nodemon": "^3.1.9"
-  }
+"name": "get-it-done",
+"version": "1.0.0",
+"main": "server/index.js",
+"engines": {
+"node": "20.x"
+},
+"scripts": {
+"start": "node server/index.js"
+},
+"dependencies": {
+"express": "^4.18.0",
+"mongoose": "^8.0.0",
+"cors": "^2.8.5",
+"dotenv": "^16.0.0"
+}
+}
+
+And here is the vercel.json that you should have. Make sure it is saved in the root of your project:
+
+{
+"version": 2,
+"rewrites": [
+{ "source": "/api/(.)", "destination": "/server/index.js" },
+{ "source": "/(.)", "destination": "/server/index.js" }
+],
+"functions": {
+"server/index.js": {
+"runtime": "nodejs20.x"
+}
+}
 }

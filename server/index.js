@@ -37,8 +37,8 @@ next();
 
 // -------------------- API ROUTES --------------------
 
-const taskRoutes = require('./routes/taskRoutes');
-const mailRoute = require('./routes/mailRoute');
+const taskRoutes = require('../routes/taskRoutes');
+const mailRoute = require('../routes/mailRoute');
 
 // All task endpoints live under /api/tasks
 app.use('/api/tasks', taskRoutes);
@@ -80,7 +80,7 @@ const colour = {
         mongoose.set('autoIndex', false);
 
         // Load the Task model so we can sync indexes
-        const Task = require('./models/task');
+        const Task = require('../models/task');
 
         // Connect to MongoDB Atlas using the URI from .env
         console.log(`${colour.dim}  ⏳ Connecting to MongoDB...${colour.reset}`);
