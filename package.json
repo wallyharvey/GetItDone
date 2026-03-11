@@ -16,17 +16,5 @@
 }
 }
 
-And here is the vercel.json that you should have. Make sure it is saved in the root of your project:
 
-{
-"version": 2,
-"rewrites": [
-{ "source": "/api/(.)", "destination": "/server/index.js" },
-{ "source": "/(.)", "destination": "/server/index.js" }
-],
-"functions": {
-"server/index.js": {
-"runtime": "nodejs20.x"
-}
-}
-}
+
